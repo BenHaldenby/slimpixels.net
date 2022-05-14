@@ -1,0 +1,562 @@
+// ------------------------------------------------------------------------------
+// Slimpixels
+// Mixins
+// ------------------------------------------------------------------------------
+
+/*------------------------------------*\
+#MIXINS
+\*------------------------------------*/
+
+// Center an element (Element must have width)
+@mixin center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Center text
+@mixin center-text {
+  text-align: center;
+}
+
+// Make this element's immediate children inline
+@mixin inline-children {    
+  & > * {
+    display: inline;
+  }
+}
+
+// replace text
+@mixin image-replace {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+// clearfix
+@mixin cf {
+  *zoom: 1;
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// inline-fix
+@mixin inline-fix {
+  letter-spacing: -5px;
+  li {
+    letter-spacing: normal;
+  }
+}
+
+// flatlist
+@mixin flatlist {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+// a flattened inline list
+@mixin hlist {
+  @include flatlist;
+  @include inline-fix;
+  &__item {
+    display: inline-block;
+    // margin: 0 10px;
+    vertical-align: top;
+  }
+}
+// a flattened vertical list
+@mixin blocklist {
+  @include flatlist;
+  > li {
+    display: block;
+    // > a {
+    //   display: block;
+    // }
+  }
+}
+// an inline DL list
+@mixin inline-dl {
+  @extend .cf;
+  dt {
+    float: left;
+  }
+  dd {
+    margin-left: 50%;
+  }
+}
+
+// Float left or right
+@mixin pull-left {
+  float: left;
+}
+@mixin pull-right {
+  float: right;
+}
+
+// Create a grey overlay on top of the element
+@mixin grey-overlay {
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.35);
+    transition: opacity 0.25s, visibility 0.25s;
+  }
+  &:hover:before {
+    cursor: pointer;
+    opacity: 0;  
+    visibility: hidden;
+  }
+}
+
+// Custom scroll box
+@mixin scrollable {
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #eee;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #bbb;
+  }
+}
+
+// No extra space
+@mixin no-space {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+// Rounded corners
+@mixin rounded-corners($radius: 4px) {
+  -moz-border-radius: $radius; 
+  -webkit-border-radius: $radius; 
+  -o-border-radius: $radius; 
+  border-radius: $radius; 
+}
+
+/*
+ * Flat list
+ */
+@mixin flat-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  li {
+    display: inline-block;
+  }
+}
+/*
+ * Flat list
+ */
+@mixin inline-list {
+  li {
+    display: inline-block;
+  }
+}
+
+// Clearfix
+//
+// For modern browsers
+// 1. The space content is one way to avoid an Opera bug when the
+//    contenteditable attribute is included anywhere else in the document.
+//    Otherwise it causes space to appear at the top and bottom of elements
+//    that are clearfixed.
+// 2. The use of `table` rather than `block` is only necessary if using
+//    `:before` to contain the top-margins of child elements.
+//
+// Source: http://nicolasgallagher.com/micro-clearfix-hack/
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// Hide text
+@mixin no-text{
+  font-size:0px;
+  line-height:0px;
+  text-indent:-999999px;
+}
+
+// Background opacity (Which you can pass hex variables to)
+@mixin background-opacity($color, $opacity: 0.3) {
+  background: $color; /* The Fallback */
+  background: rgba($color, $opacity);
+}
+
+// Create CSS Triangles in a Breeze
+@mixin cssTriangle($triangleSize, $triangleColor, $triangleDirection) {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid $triangleSize;
+  @if ($triangleDirection == top) {
+    border-color: $triangleColor transparent transparent transparent;
+  }
+  @if ($triangleDirection == bottom) {
+    border-color: transparent transparent $triangleColor transparent;
+  }
+  @if ($triangleDirection == left) {
+    border-color: transparent transparent transparent $triangleColor;
+  }
+  @if ($triangleDirection == right) {
+    border-color: transparent $triangleColor transparent transparent;
+  }
+  // Usage:
+  // .example { @include cssTriangle(5px, $white, bottom); }
+}
+
+
+// Retina me
+// Usage:
+//
+// .logo {
+//   background: url("logo.png") no-repeat;
+//   @include image-2x("logo-2x.png", 100px, 25px);
+// }
+// .thing-that-uses-sprite{
+//     @include png-sprite(filename-without-png);
+//     @include image-2x("sprite-2x.png", spritewidth-px, spriteheight-px);
+// }
+@mixin image-2x($image, $width, $height) {
+  @media (min--moz-device-pixel-ratio: 1.3),
+         (-o-min-device-pixel-ratio: 2.6/2),
+         (-webkit-min-device-pixel-ratio: 1.3),
+         (min-device-pixel-ratio: 1.3),
+         (min-resolution: 1.3dppx) {
+    /* on retina, use image that's scaled by 2 */
+    background-image: url($image);
+    background-size: $width $height;
+  }
+}
+
+@mixin inline-block-fix {
+  letter-spacing:-0.31em;
+}
+
+// Create a fully formed type style (sizing and vertical rhythm) by passing in a
+// single value, e.g.:
+//
+// `@include font-size(10px);`
+//
+// Thanks to @redclov3r for the `line-height` Sass:
+// twitter.com/redclov3r/status/250301539321798657
+@mixin font-size($font-size, $line-height:false){
+  font-size:$font-size;
+  font-size:($font-size / $base-font-size)*1rem;
+  @if $line-height == true{
+    line-height:ceil($font-size / $base-line-height) * ($base-line-height / $font-size);
+  }
+}
+
+
+// Style any number of headings in one fell swoop, e.g.:
+//
+// .foo{
+//     @include headings(1, 3){
+//         color:#BADA55;
+//     }
+//  }
+//
+// With thanks to @lar_zzz, @paranoida, @rowanmanning and ultimately
+// @thierrylemoulec for refining and improving my initial mixin.
+@mixin headings($from: 1, $to: 6){
+  %base-heading {
+    @content
+  }
+  @if $from >= 1 and $to <= 6{
+    @for $i from $from through $to{
+      h#{$i}{
+        @extend %base-heading;
+      }
+    }
+  }
+}
+
+
+
+// Create CSS keyframe animations for all vendors in one go, e.g.:
+//
+// .foo{
+//     @include vendor(animation, shrink 3s);
+// }
+
+// @include keyframe(shrink){
+//     from{
+//         font-size:5em;
+//     }
+// }
+//
+// Courtesy of @integralist: twitter.com/integralist/status/260484115315437569
+@mixin keyframe ($animation-name){
+  @-webkit-keyframes $animation-name{
+    @content;
+  }
+
+  @-moz-keyframes $animation-name{
+    @content;
+  }
+
+  @-ms-keyframes $animation-name{
+    @content;
+  }
+
+  @-o-keyframes $animation-name{
+    @content;
+  }
+
+  @keyframes $animation-name{
+    @content;
+  }
+}
+
+
+// Force overly long spans of text to truncate, e.g.:
+//
+// `@include truncate(100%);`
+//
+// Where `$truncation-boundary` is a united measurement.
+@mixin truncate($truncation-boundary){
+  max-width: $truncation-boundary;
+  white-space: nowrap;
+  overflow: hidden; 
+  text-overflow: ellipsis;
+}
+
+
+
+
+// CSS arrows!!! But... before you read on, you might want to grab a coffee...
+//
+// This mixin creates a CSS arrow on a given element. We can have the arrow
+// appear in one of 12 locations, thus:
+//
+//       01    02    03
+//    +------------------+
+// 12 |                  | 04
+//    |                  |
+// 11 |                  | 05
+//    |                  |
+// 10 |                  | 06
+//    +------------------+
+//       09    08    07
+//
+// You pass this position in along with a desired arrow color and optional
+// border color, for example:
+//
+// `@include arrow(top, left, red)`
+//
+// for just a single, red arrow, or:
+//
+// `@include arrow(bottom, center, red, black)`
+//
+// which will create a red triangle with a black border which sits at the bottom
+// center of the element. Call the mixin thus:
+//
+// .foo{
+//     background-color:#BADA55;
+//     border:1px solid #ACE;
+//     @include arrow(top, left, #BADA55, #ACE);
+// }
+@mixin arrow($arrow-edge, $arrow-location, $arrow-color, $border-color: $arrow-color){
+  @if $arrow-edge == top{
+    @extend %arrow--top;
+    &:before{
+      border-bottom-color:$border-color!important;
+    }
+    &:after{
+      border-bottom-color:$arrow-color!important;
+    }
+    @if $arrow-location == left{
+      @extend %arrow--left;
+    }
+    @if $arrow-location == center{
+        @extend %arrow--center;
+    }
+    @if $arrow-location == right{
+        @extend %arrow--right;
+    }
+  }
+
+  @if $arrow-edge == right{
+    @extend %arrow--far;
+    &:before{
+        border-left-color:$border-color!important;
+    }
+    &:after{
+        border-left-color:$arrow-color!important;
+    }
+    @if $arrow-location == top{
+        @extend %arrow--upper;
+    }
+    @if $arrow-location == center{
+        @extend %arrow--middle;
+    }
+    @if $arrow-location == bottom{
+        @extend %arrow--lower;
+    }
+  }
+
+  @if $arrow-edge == bottom{
+    @extend %arrow--bottom;
+    &:before{
+        border-top-color:$border-color!important;
+    }
+    &:after{
+        border-top-color:$arrow-color!important;
+    }
+    @if $arrow-location == left{
+        @extend %arrow--left;
+    }
+    @if $arrow-location == center{
+        @extend %arrow--center;
+    }
+    @if $arrow-location == right{
+        @extend %arrow--right;
+    }
+  }
+
+  @if $arrow-edge == left{
+    @extend %arrow--near;
+    &:before{
+        border-right-color:$border-color!important;
+    }
+    &:after{
+        border-right-color:$arrow-color!important;
+    }
+    @if $arrow-location == top{
+        @extend %arrow--upper;
+    }
+    @if $arrow-location == center{
+        @extend %arrow--middle;
+    }
+    @if $arrow-location == bottom{
+        @extend %arrow--lower;
+    }
+  }
+}
+
+
+// Ad-hoc media-queries
+@mixin media-query($breakpoint) {
+  @if $breakpoint == landscape {
+    @media only screen and (orientation : landscape) { @content; }  
+  }
+  @else {
+    @media only screen and ($breakpoint) { @content; }
+  }  
+}
+
+
+// Media query mixin.
+//
+// It’s not great practice to define solid breakpoints up-front, preferring to
+// modify your design when it needs it, rather than assuming you’ll want a
+// change at ‘mobile’. However, as inuit.css is required to take a hands off
+// approach to design decisions, this is the closest we can get to baked-in
+// responsiveness. It’s flexible enough to allow you to set your own breakpoints
+// but solid enough to be frameworkified.
+//
+// We define some broad breakpoints in our vars file that are picked up here
+// for use in a simple media query mixin. Our options are:
+//
+// palm
+// lap
+// lap-and-up
+// portable
+// desk
+// desk-wide
+//
+// Not using a media query will, naturally, serve styles to all devices.
+//
+// `@include media-query(palm){ [styles here] }`
+//
+// We work out your end points for you:
+
+// @mixin media-query($media-query){
+//   @if $media-query == palm{
+//     @media only screen and (max-width:$palm-end) { @content; }
+//   }
+//   @if $media-query == lap{
+//     @media only screen and (min-width:$lap-start) and (max-width:$lap-end) { @content; }
+//   }
+//   @if $media-query == lap-and-up{
+//     @media only screen and (min-width:$lap-start) { @content; }
+//   }
+//   @if $media-query == portable{
+//     @media only screen and (max-width:$lap-end) { @content; }
+//   }
+//   @if $media-query == desk{
+//     @media only screen and (min-width:$desk-start) { @content; }
+//   }
+//   @if $media-query == desk-wide{
+//     @media only screen and (min-width: $desk-wide-start) { @content; }
+//   }
+// }
+
+
+@mixin button-variant($color, $background, $border) {
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    color: $color;
+    background-color: darken($background, 10%);
+        border-color: darken($border, 12%);
+  }
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      background-color: $background;
+          border-color: $border;
+    }
+  }
+
+  .badge {
+    color: $background;
+    background-color: $color;
+  }
+}
+
+// Button sizes
+@mixin button-size($padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius) {
+  padding: $padding-vertical $padding-horizontal;
+  font-size: $font-size;
+  line-height: $line-height;
+  border-radius: $border-radius;
+}

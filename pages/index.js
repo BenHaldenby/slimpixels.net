@@ -1,58 +1,36 @@
-import { createClient } from "next-sanity";
+import Head from 'next/head'
+import styles from '../styles/Home.module.css'
+import Container from '../components/Container'
+import FavouriteProjects from '../components/FavouriteProjects'
+import LatestCode from '../components/LatestCode'
+import Hero from '../components/Hero'
+import getLatestRepos from '../lib/getLatestRepos'
+import userData from '../constants/data'
 
-export default function IndexPage({ pets }) {
+export default function Home({ repositories }) {
   return (
-    <>
-      <header>
-        <h1>Sanity + Next.js</h1>
-      </header>
-      <main>
-        <h2>Pets</h2>
-        {pets.length > 0 && (
-          <ul>
-            {pets.map((pet) => (
-              <li key={pet._id}>
-                {pet?.name}
-                <br/>
-                {pet?.species}
-              </li>
-            ))}
-          </ul>
-        )}
-        {!pets.length > 0 && <p>No pets to show</p>}
-        {pets.length > 0 && (
-          <div>
-            <pre>{JSON.stringify(pets, null, 2)}</pre>
-          </div>
-        )}
-        {!pets.length > 0 && (
-          <div>
-            <div>¯\_(ツ)_/¯</div>
-            <p>
-              Your data will show up here when you've configured everything
-              correctly
-            </p>
-          </div>
-        )}
-      </main>
-    </>
-  );
+    <Container
+      title="Homepage"
+      description="This is the homepage"
+    >
+      <Hero />
+      <FavouriteProjects />
+      <LatestCode repositories={repositories} />
+      <div>test</div>
+    </Container>
+  )
 }
 
-const client = createClient({
-  projectId: "6fvvsjbr",
-  dataset: "production",
-  apiVersion: "2022-03-25",
-  useCdn: false
-});
+export const getServerSideProps = async () => {
+  console.log(process.env.GITHUB_AUTH_TOKEN)
+  let token = process.env.GITHUB_AUTH_TOKEN
 
-
-export async function getStaticProps() {
-  const pets = await client.fetch(`*[_type == "pet"]`);
+  const repositories = await getLatestRepos(userData, token)
+  console.log('REPOSITORIES', repositories)
 
   return {
     props: {
-      pets
-    }
-  };
+      repositories,
+    },
+  }
 }

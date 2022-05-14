@@ -1,0 +1,40 @@
+// ------------------------------------------------------------------------------
+// Slimpixels
+// Blog layout
+// ------------------------------------------------------------------------------
+
+
+.blog {
+  
+}
+.blog__article,
+.blog__sidebar {
+  float: left;
+}
+
+.blog__article {
+  @include mq($until: tablet) {
+    margin-bottom: 100px;
+    padding-bottom: 100px; 
+    border-bottom: 1px solid #ddd;
+  }
+  @include mq($from: tablet) {
+    width: 55%;
+  }
+}
+.blog__sidebar {
+  @include mq($from: tablet) {
+    width: 25%;
+    margin-left: 20%;
+    padding-top: 135px; 
+  }
+  h2 {
+    margin-bottom: 0; 
+    font-family: $body-font; 
+    font-size: 1.2em; 
+  }
+  ul {
+    list-style: none;
+    padding: 0; 
+  }
+}

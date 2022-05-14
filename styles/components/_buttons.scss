@@ -1,0 +1,74 @@
+// ------------------------------------------------------------------------------
+// Slimpixels
+// Buttons
+// ------------------------------------------------------------------------------
+
+.btn {
+  display: inline-block;
+  margin-bottom: 0;
+  padding: 6px 12px;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-image: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+}
+
+.btn:hover,
+.btn--lg:hover,
+.btn--contact:hover,
+.btn--download:hover {
+  text-decoration: none;
+}
+
+.btn--primary {
+  padding: 0 1em;
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 1px solid;
+  border-radius: 6px;
+  transition: background 250ms, color 250ms;
+  &:hover {
+    background: #337ab7;
+    color: $color-white;
+  }
+}
+
+.btn--block {
+  display: block;
+  width: 100%;
+}
+.btn--lg {
+  padding: 1.25em 2em;
+  font-size: 0.75em;
+  font-weight: 700;
+}
+
+.btn--contact,
+.btn--download,
+.btn--send {
+  margin: 0.5em 0;
+  text-transform: uppercase;
+  color: #337ab7;
+  border: 2px solid #337ab7;
+  &:hover {
+    background-color: #5287b7;
+    color: $color-white;
+  }
+}
+.btn--send {
+  background-color: #337ab7;
+  color: $color-white;
+  &:hover {
+    background-color: $color-white;
+    color: #337ab7;
+  }
+}

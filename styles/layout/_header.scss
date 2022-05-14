@@ -1,0 +1,40 @@
+// ------------------------------------------------------------------------------
+// Slimpixels
+// Header
+// ------------------------------------------------------------------------------
+
+.header {
+  transition: background 100ms;
+  a {
+    text-transform: uppercase;
+    color: $color-white;
+    mix-blend-mode: difference;
+  }
+}
+.header--gradient {
+  //background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(255,255,255,0) 100%);
+}
+.header--main {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  transition: background 250ms, transform 500ms;
+  .container {
+    max-width: none;
+  }
+}
+.header--filled,
+.header--filled-perm {
+  background: $color-white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+}
+.header--up {
+  transform: translateY(-132px);
+}
+
+.header__nav {
+  @include mq($from: tablet) {
+    float: right;
+  }
+}

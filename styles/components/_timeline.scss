@@ -1,0 +1,143 @@
+// ------------------------------------------------------------------------------
+// Slimpixels
+// Timeline
+// ------------------------------------------------------------------------------
+
+.bio_half {
+  @include mq($from: tablet) {
+    float: left;
+    width: 45%;
+    &:last-child {
+      margin-left: 10%;
+    }
+  }
+}
+.bio {
+  margin-bottom: 50px;
+  @include mq($from: tablet) {
+    margin-bottom: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+  ul {
+    padding: 0;
+    list-style: none;
+    font-size: 0.8em;
+  }
+  li {
+    margin-bottom: 1em;
+    padding: 0.5em 0.8em;
+    line-height: 1.25;
+    background: #5287b7;
+    color: $color-white;
+    border-radius: 6px;
+  }
+}
+
+.timeline {
+  padding-bottom: 100px;
+  text-align: center;
+  @include mq($from: tablet) {
+    padding-bottom: 0;
+  }
+  .year {
+    min-height: 7em;
+    position: relative;
+    &.first h4,
+    &:first-child h4 {
+      background: none;
+    }
+    &.tall {
+      height: 15em;
+    }
+    &:before,
+    &:after,
+    h4:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      left: 50%;
+      top: 45px;
+      bottom: -10px;
+      background-color: #5287b7;
+    }
+    &:after,
+    h4:before {
+      width: 11px;
+      height: 11px;
+      top: initial;
+      bottom: -20px;
+      border-radius: 100%;
+      margin-left: -4px;
+    }
+
+    h4 {
+      margin-top: 40px;
+      margin-bottom: 0;
+      font-family: $body-font;
+      font-size: 1.1em;
+      line-height: 1;
+      &:before {
+        top: 35px;
+        bottom: initial;
+      }
+    }
+    &:last-child {
+      &:before,
+      &:after,
+      h4:before {
+        display: none;
+      }
+      .appt {
+        top: -50px;
+      }
+    }
+  }
+  .appt {
+    width: 38%;
+    margin-top: 1em;
+    padding: 10px 10px 10px 14px;
+    text-align: left;
+    background-color: $color-white;
+    border: 3px solid #5287b7;
+    @include rounded-corners(10px);
+
+    &.l {
+      left: 0;
+      position: absolute;
+    }
+    &.r {
+      right: 0;
+      position: absolute;
+      margin-top: 1em;
+    }
+    &.bm {
+      height: 12em;
+    }
+    &.fivebyfive {
+      height: 11em;
+      top: 12em;
+    }
+    &.ff {
+      height: 10em;
+      top: -3em;
+    }
+    &.worldtravel {
+      height: 13em;
+      top: -2em;
+    }
+    h5,
+    p {
+      font-family: $body-font;
+      font-size: 0.7em;
+      line-height: 1.2;
+    }
+    h5 {
+      margin: 0 0 0.5em 0;
+    }
+    p {
+      margin-bottom: 0;
+    }
+  }
+}

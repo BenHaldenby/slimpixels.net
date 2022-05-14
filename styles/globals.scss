@@ -1,0 +1,71 @@
+// ------------------------------------------------------------------------------
+// Slimpixels
+// Main stylesheet
+// style.scss
+// @imports all other variables, components, etc
+// ------------------------------------------------------------------------------
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'fonts.css';
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Inter var', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+// Default/variables
+@import 'vars/defaults';
+@import 'vars/colours';
+
+// Vendor
+//@import "vendor/font-awesome/font-awesome";
+
+// Mixins/utils
+@import 'helpers/mixins';
+@import 'helpers/utilities';
+
+// Base
+@import 'base/normalize';
+//@import "base/grid";
+@import 'base/mq';
+@import 'base/typography';
+
+// // Layout
+@import 'layout/base';
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/sidebar';
+@import 'layout/project';
+@import 'layout/blog';
+
+// // Components
+@import 'components/buttons';
+@import 'components/forms';
+@import 'components/iconfont';
+@import 'components/icons';
+
+@import 'components/brand';
+@import 'components/globalnav';
+@import 'components/morphnav';
+@import 'components/maps';
+@import 'components/banner';
+@import 'components/browser';
+@import 'components/timeline';
+@import 'components/logos';
+
+// Helper classes
+@import 'helpers/helpers';

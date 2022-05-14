@@ -1,0 +1,51 @@
+// ------------------------------------------------------------------------------
+// Slimpixels
+// Client logos
+// ------------------------------------------------------------------------------
+
+
+.logos {
+  display: flex;
+  align-items: center;
+  align-content: stretch;
+  flex-flow: row wrap;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.logos__item {
+  width: 16%;
+  margin: 2% 2%;
+  text-align: center;
+  @include mq($until: tablet) {
+    width: 21%;
+    margin: 4% 6%;
+  }
+  &--nhs {
+    .logos__img { }
+  }
+  &--etch {
+    .logos__img { }
+  }
+  &--britishmuseum {
+    .logos__img { }
+  }
+  &--patron {
+    .logos__img { }
+  }
+  &--fivebyfive {
+    .logos__img { }
+  }
+  &--movieglu {
+    .logos__img { }
+  }
+  &--tribeca {
+    .logos__img { }
+  }
+  &--missesdressy {
+    .logos__img { }
+  }
+}
+.svg__element--grey {
+  fill: #999;
+}

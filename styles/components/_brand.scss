@@ -1,0 +1,43 @@
+// ------------------------------------------------------------------------------
+// Slimpixels
+// Branding
+// ------------------------------------------------------------------------------
+
+.brand {
+  @extend .pull-left;
+  margin: 0.73em 0;
+  font-family: $nav-font;
+  font-size: 1.25em;
+  @include mq($until: tablet) {
+    margin: 0.45em 0;
+    font-size: 1.5em;
+  }
+  @include mq($from: wide) {
+    margin: 0.85em 0;
+    font-size: 1.25em;
+  }
+  font-weight: 200;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: $color-white;
+}
+.brand__link {
+  color: $color-white;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
+  &:hover {
+    color: #2fd9dc;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+.header--filled,
+.header--filled-perm {
+  .brand__link {
+    color: #333;
+    &:hover {
+      color: #2fd9dc;
+    }
+  }
+}

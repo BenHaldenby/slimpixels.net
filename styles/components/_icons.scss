@@ -1,0 +1,64 @@
+// ------------------------------------------------------------------------------
+// Slimpixels
+// Icons
+// ------------------------------------------------------------------------------
+
+.icon {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transition: all 250ms;
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.icon--xs {
+  width: 12px;
+  height: 12px;
+}
+.icon--sm {
+  width: 18px;
+  height: 18px;
+}
+.icon--md {
+  width: 24px;
+  height: 24px;
+}
+
+.has-icon {
+  transition: all 0.25s;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    .icon {
+      path {
+        fill: $color-icon-hover;
+      }
+    }
+  }
+}
+
+.icon--email {
+  width: 30px;
+  height: 30px;
+}
+
+.icon--pdf {
+  margin-left: 0.5em;
+  vertical-align: sub;
+  background-image: url(/assets/icons/icon-pdf.svg);
+}
+.icon--new-window {
+  margin-bottom: 5px;
+  margin-left: 4px;
+  background-image: url(/assets/icons/icon-new-window.svg);
+  opacity: 0.35;
+}

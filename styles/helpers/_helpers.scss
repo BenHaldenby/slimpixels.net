@@ -1,0 +1,124 @@
+// ------------------------------------------------------------------------------
+// Slimpixels
+// Helper classes
+// ------------------------------------------------------------------------------
+
+
+.hide,
+.hidden,
+.hide-me {
+  display: none;
+}
+
+// show only on phones (up to tablet)
+.phone-visible {
+  display: none;
+  @include mq($from: mobile) {
+    display: block;
+  }
+}
+.phone-hidden {
+  @include mq($from: mobile) {
+    display: none !important;
+  }
+}
+
+
+
+// show on tablet
+.tablet-visible {
+  display: none;
+  @include mq($from: tablet) {
+    display: block;
+  }
+}
+.tablet-hidden {
+  @include mq($from: tablet) {
+    display: none !important;
+  }
+}
+
+
+// desktop
+.desktop-visible {
+  display: none;
+  @include mq($from: desktop) {
+    display: block;
+  }
+}
+.desktop-hidden {
+  @include mq($from: desktop) {
+    display: none !important;
+  }
+}
+
+// Helpers
+.mt0 {
+  margin-top: 0 !important;
+}
+.mb0 {
+  margin-bottom: 0 !important;
+}
+
+
+// Utility classes
+.u-align-bottom {
+  @include mq($from: tablet, $until: ultrawide) {
+    align-self: flex-end;
+  }
+}
+.u-align-center {
+  @include mq($from: tablet) {
+    align-items: center;
+  }
+}
+
+.u-tc {
+  text-align: center;
+}
+.u-tr {
+  text-align: right;
+}
+
+
+.u-pb-0 {
+  padding-bottom: 0;
+}
+.u-pb-1 {
+  padding-bottom: 1em;
+}
+.u-pb-2 {
+  padding-bottom: 2em;
+}
+.u-pb-4 {
+  padding-bottom: 4em;
+}
+.u-pb-8 {
+  padding-bottom: 8em;
+}
+
+.u-mb-0 {
+  margin-bottom: 0;
+}
+.u-mb-1 {
+  @include mq($until: tablet) {
+    margin-bottom: 0.5em;
+  }
+  margin-bottom: 1em;
+}
+.u-mb-2 {
+  margin-bottom: 2em;
+}
+.u-mb-4 {
+  margin-bottom: 4em;
+}
+.u-mb-8 {
+  margin-bottom: 8em; 
+}
+
+
+.hide-ultrawide {
+  @include mq($from: ultrawide) {
+    display: none;
+  }
+}

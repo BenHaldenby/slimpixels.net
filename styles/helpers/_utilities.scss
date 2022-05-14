@@ -1,0 +1,37 @@
+// ------------------------------------------------------------------------------
+// Slimpixels
+// Utilities
+// These can be used in markup or with @extend
+// ------------------------------------------------------------------------------
+
+
+// Good old clearfix
+.cf {
+  @include cf;
+}
+
+// make .pull-left and .pull-right classes from mixins 
+// seems redundant but now we can use them extends or as mixins in media-queries
+.pull-left {
+  @include pull-left;
+}
+.pull-right {
+  @include pull-right;
+}
+
+
+// make hlist and blocklist classes from mixins 
+// seems redundant but now we can use them in markup
+.hlist {
+  @include hlist;
+}
+.blocklist {
+  @include blocklist;
+}
+.inline-fix {
+  @include inline-fix;
+}
+// inline DL list
+.inline-dl {
+  @include inline-dl;
+}

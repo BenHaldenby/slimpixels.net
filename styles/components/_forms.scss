@@ -1,0 +1,95 @@
+// ------------------------------------------------------------------------------
+// Slimpixels
+// Forms
+// ------------------------------------------------------------------------------
+
+.search-field {
+  width: 100%;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  transition: all 250ms;
+  &:focus {
+    outline: none;
+    border-color: #03a9f4;
+  }
+}
+.search-submit {
+  display: none;
+}
+
+fieldset {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 15px;
+  margin-bottom: 0.5em;
+  font-size: 1em;
+  border: 1px solid #7ba9dc;
+  border-radius: 4px;
+  &:focus {
+    outline: none;
+    border-color: #ffbe08;
+    &::-webkit-input-placeholder {
+      //color: #ffbe08;
+    }
+  }
+  &::-webkit-input-placeholder {
+    color: #7ba9dc;
+  }
+  &::-moz-placeholder {
+    color: #7ba9dc;
+  }
+  &:-ms-input-placeholder {
+    color: #7ba9dc;
+  }
+  &:-moz-placeholder {
+    color: #7ba9dc;
+  }
+  &:focus {
+    &::-webkit-input-placeholder {
+      color: #ffbe08;
+    }
+    &::-moz-placeholder {
+      color: #ffbe08;
+    }
+    &:-ms-input-placeholder {
+      color: #ffbe08;
+    }
+    &:-moz-placeholder {
+      color: #ffbe08;
+    }
+  }
+}
+
+.input--textarea {
+  padding: 15px;
+  resize: none;
+}
+
+.form__messages {
+  opacity: 0;
+  transition: opacity 150ms;
+  &.success,
+  &.error {
+    padding: 1em;
+    margin-top: 0.2em;
+    text-align: center;
+    border-radius: 5px;
+    color: $color-white;
+    opacity: 1;
+  }
+  &.success {
+    background: #8dc26f;
+  }
+  &.error {
+    background-color: #e85657;
+    .content-style-overlay & {
+      background-color: #bf0f10;
+    }
+  }
+}
