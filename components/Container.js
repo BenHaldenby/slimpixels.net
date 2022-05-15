@@ -88,11 +88,7 @@ export default function Container({ children }, ...CustomMeta) {
       <main className="dark:bg-gray-800 w-full">
         <header className="header-blend">
           <Navbar />
-          <Hero
-            className={` hero  ${
-              router.asPath === '/' ? 'text-primary-500' : 'text-secondary-300'
-            }`}
-          />
+          {router.asPath === '/' ? <Hero /> : ''}
         </header>
         <div>{children}</div>
         <Footer />

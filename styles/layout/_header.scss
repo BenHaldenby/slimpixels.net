@@ -20,6 +20,7 @@
   width: 100%;
   z-index: 100;
   transition: background 250ms, transform 500ms;
+  mix-blend-mode: difference;
   .container {
     max-width: none;
   }
