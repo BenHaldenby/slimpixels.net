@@ -145,15 +145,15 @@ $fontspath: '../../assets/fonts/';
   font-style: normal;
 }
 
-$heading-font: PostoniWide, Georgia, serif;
-$body-font: BrandonText, BrandonGrotesk, 'Helvetica Neue', Helvetica, Arial,
+$font-heading: PostoniWide, Georgia, serif;
+$font-body: BrandonText, BrandonGrotesk, 'Helvetica Neue', Helvetica, Arial,
   sans-serif;
-$quotes-font: Georgia, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-quotes: Georgia, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $franklin-font: 'Franklin Gothic', 'Helvetica Neue', Helvetica, Arial,
   sans-serif;
-$nav-font: 'Pathway Gothic One', sans-serif;
-$condensed-font: 'Pathway Gothic One', sans-serif;
-$amp-font: Baskerville, GoudyBookletter1911, 'Goudy Old Style', Palatino,
+$font-nav: 'Pathway Gothic One', sans-serif;
+$font-condensed: 'Pathway Gothic One', sans-serif;
+$font-amp: Baskerville, GoudyBookletter1911, 'Goudy Old Style', Palatino,
   'Book Antiqua', serif;
 
 html,
@@ -161,14 +161,12 @@ body {
   text-rendering: optimizeLegibility;
 }
 body {
-  font-family: $body-font;
-}
-a {
+  font-family: $font-body;
 }
 
 h1,
 .h1 {
-  font-family: $heading-font;
+  font-family: $font-heading;
   font-size: 2.2em;
   font-weight: bold;
 }
@@ -182,7 +180,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: $body-font;
+  font-family: $font-heading;
   -webkit-font-smoothing: antialiased;
   line-height: inherit;
 }
@@ -210,14 +208,10 @@ h6,
 p {
   margin: 0 0 1.51em 0;
   &:last-child {
-    @include mq($from: tablet) {
-      margin-bottom: 0;
-    }
+    margin-bottom: 0;
   }
 }
 
-.p {
-}
 .p--light {
   color: #999;
 }
@@ -255,7 +249,7 @@ ol {
 
 .h4--contact {
   margin: 1em 0 0.5em 0;
-  font-family: $body-font;
+  font-family: $font-body;
   font-size: 1em;
   font-weight: 400;
   line-height: 1.2;
@@ -306,11 +300,11 @@ ol {
 }
 .amp {
   display: block;
-  font-family: $amp-font;
+  font-family: $font-amp;
   font-style: italic;
 }
 .page-sub-title {
-  font-family: $body-font;
+  font-family: $font-body;
   font-size: 1.5em;
   font-weight: 400;
   line-height: 1;

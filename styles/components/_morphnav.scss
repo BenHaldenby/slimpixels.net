@@ -28,7 +28,6 @@
 .morph-button {
   position: relative;
   display: block;
-  margin: 0 auto;
 }
 
 .morph-button--mobile-nav {
@@ -55,14 +54,6 @@
   font-weight: 700;
   line-height: 80px;
   overflow: hidden;
-}
-
-.morph-button.open > .btn {
-  //pointer-events: none;
-}
-
-.morph-content {
-  //pointer-events: none;
 }
 
 .morph-button.open .morph-content {
@@ -153,10 +144,6 @@
     -webkit-transition: opacity 0.3s 0.5s;
     transition: opacity 0.3s 0.5s;
   }
-}
-
-.morph-button-fixed.active > .btn {
-  //z-index: 2000;
 }
 
 .morph-button-fixed.active .morph-content {
@@ -446,7 +433,7 @@
   width: 300px;
   height: 100%;
   overflow: hidden;
-  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* Let's add some nice easing for all cases */

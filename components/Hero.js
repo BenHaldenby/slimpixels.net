@@ -1,9 +1,9 @@
 import React from 'react'
 import HeroVideo from './HeroVideo'
 
-export default function Hero({ children }) {
+export default function Hero(props) {
   return (
-    <div className="hero">
+    <div className={`${props.className} hero`}>
       <HeroVideo />
     </div>
   )

@@ -73,28 +73,28 @@ a {
   transition: color 250ms, background-color 250ms;
 }
 a:hover {
-  //text-decoration: underline;
+  text-decoration: underline;
 }
 
 .wrapper {
 }
 
 .container {
+  padding: 0 1em;
   @include mq($until: tablet) {
-    margin: 0 1em;
     &--project-grid {
-      margin: 0;
+      padding: 0;
     }
   }
   @include mq($from: tablet) {
     width: 90%;
     margin: 0 auto;
+    padding: 0;
   }
 
   max-width: inherit;
   transition: max-width 250ms;
-  // background: pink;
-  @extend .cf;
+
   @include mq($from: desktop) {
     max-width: 900px;
   }
@@ -103,6 +103,10 @@ a:hover {
   }
   @include mq($from: ultrawide) {
     max-width: 1400px;
+  }
+
+  &--centered {
+    text-align: center;
   }
 }
 
@@ -256,19 +260,26 @@ img {
 
 // Sections
 .section {
-  padding: 2em 0;
-  @include mq($from: tablet) {
-    padding: 3em 0;
-  }
-  @include mq($from: wide) {
-    padding: 6em 0;
-  }
-  @include mq($from: ultrawide) {
+  background-color: #fff;
+  &--pt,
+  &--pb {
     padding: 4em 0;
+    @include mq($from: tablet) {
+      // padding: 3em 0;
+    }
+    @include mq($from: wide) {
+      padding: 6em 0;
+    }
+    @include mq($from: ultrawide) {
+      padding: 4em 0;
+    }
   }
   &--dark {
     padding: 6em 0;
     background-color: #172745;
+  }
+  &--grey {
+    background-color: #f1f1f1;
   }
   &--blue {
     background-color: #5287b7;
@@ -331,6 +342,17 @@ img {
     //   max-height: 855px;
     // }
   }
+  &--full-screen {
+    min-height: 100vh;
+  }
+  &--half-screen {
+    min-height: 50vh;
+  }
+  &--vertically-centered {
+    display: flex;
+    align-items: center;
+  }
+
   &:last-child {
     // padding-bottom: 10em;
   }
@@ -396,7 +418,7 @@ img {
 .section-title {
   margin-top: 0;
   margin-bottom: 2em;
-  font-family: $condensed-font;
+  font-family: $font-condensed;
   text-transform: uppercase;
   font-weight: 100;
   font-size: 1.25em;
@@ -467,4 +489,49 @@ img {
 .img--service {
   width: 75%;
   margin: 0 auto;
+}
+
+.document {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+  > .project-hero-image,
+  > section,
+  > .section,
+  > .footer {
+    scroll-snap-align: start;
+    // border-top: 3px solid red;
+    // border-bottom: 3px solid green;
+  }
+  > section:last-of-type {
+    position: relative;
+    &::after {
+      position: absolute;
+      content: '';
+      box-shadow: 0 10px 30px rgb(0 0 0 / 25%);
+      height: 100%;
+      bottom: 0;
+      z-index: -1;
+      width: 100%;
+    }
+  }
+
+  .footer {
+    bottom: 0;
+    width: 100%;
+    height: 250px;
+    color: #fff;
+    z-index: -1;
+    position: sticky;
+    display: block;
+    padding: 30px;
+    grid-auto-columns: 1fr;
+    -ms-grid-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    -ms-grid-rows: auto;
+    grid-template-rows: auto;
+    background-color: #252a4785;
+    display: flex;
+    align-items: center;
+  }
 }

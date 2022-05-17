@@ -4,16 +4,15 @@
 // ------------------------------------------------------------------------------
 
 .brand {
-  @extend .pull-left;
-  margin: 0.73em 0;
-  font-family: $nav-font;
+  // margin: 0.73em 0;
+  font-family: $font-nav;
   font-size: 1.25em;
   @include mq($until: tablet) {
-    margin: 0.45em 0;
+    // margin: 0.45em 0;
     font-size: 1.5em;
   }
   @include mq($from: wide) {
-    margin: 0.85em 0;
+    // margin: 0.85em 0;
     font-size: 1.25em;
   }
   font-weight: 200;
@@ -21,6 +20,10 @@
   text-transform: uppercase;
   letter-spacing: 4px;
   color: $color-white;
+
+  a {
+    padding: 10px 0;
+  }
 }
 .brand__link {
   color: $color-white;

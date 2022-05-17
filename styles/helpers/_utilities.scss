@@ -4,13 +4,12 @@
 // These can be used in markup or with @extend
 // ------------------------------------------------------------------------------
 
-
 // Good old clearfix
 .cf {
   @include cf;
 }
 
-// make .pull-left and .pull-right classes from mixins 
+// make .pull-left and .pull-right classes from mixins
 // seems redundant but now we can use them extends or as mixins in media-queries
 .pull-left {
   @include pull-left;
@@ -19,8 +18,7 @@
   @include pull-right;
 }
 
-
-// make hlist and blocklist classes from mixins 
+// make hlist and blocklist classes from mixins
 // seems redundant but now we can use them in markup
 .hlist {
   @include hlist;
@@ -34,4 +32,16 @@
 // inline DL list
 .inline-dl {
   @include inline-dl;
+}
+
+.repo-link {
+  p {
+    margin-bottom: 0;
+  }
+  &:hover {
+    text-decoration: none;
+    p {
+      text-decoration: underline;
+    }
+  }
 }

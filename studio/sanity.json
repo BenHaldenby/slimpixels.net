@@ -1,7 +1,8 @@
 {
   "root": true,
   "project": {
-    "name": "slimpixels.net"
+    "name": "slimpixels.net",
+    "basePath": "/studio"
   },
   "api": {
     "projectId": "6fvvsjbr",
@@ -11,7 +12,8 @@
     "@sanity/base",
     "@sanity/default-layout",
     "@sanity/default-login",
-    "@sanity/desk-tool"
+    "@sanity/desk-tool",
+    "tags"
   ],
   "env": {
     "development": {
@@ -24,10 +26,6 @@
     {
       "name": "part:@sanity/base/schema",
       "path": "./schemas/schema"
-    },
-    {
-      "implements": "part:@sanity/base/root",
-      "path": "plugins/sanity-plugin-tutorial/CustomDefaultLayout"
     }
   ]
 }

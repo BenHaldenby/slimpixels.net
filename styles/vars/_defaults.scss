@@ -4,34 +4,32 @@
 // Debugging etc
 // ------------------------------------------------------------------------------
 
-
-// DEBUG 
-// 
+// DEBUG
+//
 // Debug mode will visually highlight any potential markup/accessibility quirks
 // in the browser. Set to `true` or `false`.
-$debug-mode:        false!default;
+$debug-mode: false !default;
 
 // BORDER-BOX
-$global-border-box: true!default;
+$global-border-box: true !default;
 
 //  $BASE
-$base-font-size:    16px!default;
-$base-line-height:  20px!default;
+$base-font-size: 16px !default;
+$base-line-height: 20px !default;
 
 // Base font-family.
-$base-font-family:  sans-serif!default;
+$base-font-family: sans-serif !default;
 
 // Default colour for objects’ borders etc.
-$base-ui-color:     #ccc!default;
-
+$base-ui-color: #ccc !default;
 
 // Breakpoints
 $mq-breakpoints: (
-    mobile:     320px,
-    mobile-lg:  640px,
-    tablet:     740px,
-    tablet-l:   1025px,
-    desktop:    980px,
-    wide:       1300px,
-    ultrawide:  1700px
+  mobile: 320px,
+  mobile-lg: 640px,
+  tablet: 768px,
+  tablet-l: 1025px,
+  desktop: 980px,
+  wide: 1300px,
+  ultrawide: 1700px,
 );

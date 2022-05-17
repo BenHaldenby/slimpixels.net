@@ -1,0 +1,68 @@
+// ------------------------------------------------------------------------------
+// Slimpixels
+// Social Links
+// ------------------------------------------------------------------------------
+
+.social-links {
+  @include hlist;
+}
+.social-links--mobile {
+  margin-top: 4em;
+  @include mq($from: tablet) {
+    display: none;
+  }
+}
+.social-links__item {
+  margin: 5px;
+}
+.social-links__link {
+  display: block;
+  width: 40px;
+  height: 40px;
+  padding: 10px 8px;
+  text-align: center;
+  line-height: 1;
+  background-color: $color-white;
+  border-radius: 25px;
+
+  &--linkedin {
+    padding-top: 8px;
+  }
+  &--upwork {
+    padding-top: 13px;
+  }
+
+  .social-links--footer & {
+    width: 30px;
+    height: 30px;
+    padding: 8px 7px;
+    line-height: 0;
+    background-color: #ddd;
+    transition: background 250ms;
+    &:hover {
+      background-color: #e85657;
+    }
+    &--upwork {
+      padding-top: 10px;
+    }
+  }
+}
+.social-links--mobile {
+  .social-links__icon {
+    .svg__element {
+      fill: rgb(232, 86, 87);
+      &--white {
+        fill: $color-white;
+      }
+    }
+  }
+}
+.social-links--footer {
+  margin: 0;
+  .svg__element {
+    fill: $color-white;
+    &--white {
+      fill: #ddd;
+    }
+  }
+}

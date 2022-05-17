@@ -1,12 +1,26 @@
 import React from 'react'
-import Head from 'next/head'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
+import Document from './Document'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import Hero from './Hero'
 
 export default function Container({ children }, ...CustomMeta) {
   const router = useRouter()
+
+  const [scrollFilled, setScrollFilled] = useState(false)
+  const [filled, setFilled] = useState(false)
+
+  function handleChange(newValue) {
+    console.log('setFilled', newValue)
+    setFilled(newValue)
+  }
+  function handleScrollChange(newValue) {
+    console.log('setScrollFilled', newValue)
+    setScrollFilled(newValue)
+  }
 
   const meta = {
     title: "Ben Haldenby's Portfolio",
@@ -17,7 +31,7 @@ export default function Container({ children }, ...CustomMeta) {
   }
 
   return (
-    <div>
+    <>
       <Head>
         <title>{meta.title}</title>
         <meta
@@ -80,19 +94,25 @@ export default function Container({ children }, ...CustomMeta) {
         )}
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Pathway+Gothic+One"
+          href="https://fonts.googleapis.com/css?family=Pathway+Gothic+One&display=optional"
           type="text/css"
           media="all"
         />
       </Head>
-      <main className="dark:bg-gray-800 w-full">
-        <header className="header-blend">
-          <Navbar />
-          {router.asPath === '/' ? <Hero /> : ''}
-        </header>
-        <div>{children}</div>
-        <Footer />
+      <main>
+        <Navbar
+          onChange={handleChange}
+          filled={filled}
+          scrollFilled={scrollFilled}
+        />
+        <Document
+          onScrollChange={handleScrollChange}
+          onChange={handleChange}
+        >
+          {children}
+          <Footer />
+        </Document>
       </main>
-    </div>
+    </>
   )
 }

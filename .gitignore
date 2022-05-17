@@ -8,10 +8,6 @@
 # testing
 /coverage
 
-# next.js
-.next
-/out/
-
 # production
 /build
 
@@ -30,3 +26,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+.next
+.next/cache/
+/out/
